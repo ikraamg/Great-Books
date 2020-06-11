@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: %i[show edit update destroy]
 
   # GET /books
   def index
@@ -7,8 +7,7 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1
-  def show
-  end
+  def show; end
 
   # GET /books/new
   def new
@@ -16,29 +15,26 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /books
   def create
     @book = Book.new(book_params)
 
-    
-      if @book.save
-        redirect_to @book, notice: 'Book was successfully created.'
-      else
-        render :new
-      end
-   
+    if @book.save
+      redirect_to @book, notice: 'Book was successfully created.'
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /books/1
   def update
-      if @book.update(book_params)
-        redirect_to @book, notice: 'Book was successfully updated.'
-      else
-        render :edit 
-      end
+    if @book.update(book_params)
+      redirect_to @book, notice: 'Book was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   # DELETE /books/1
@@ -48,13 +44,14 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def book_params
-      params.require(:book).permit(:author_id, :title, :text, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def book_params
+    params.require(:book).permit(:author_id, :title, :text, :image)
+  end
 end
