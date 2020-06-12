@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+  <%= form.label :category %>
+  <%= form.collection_select(:category, @categories, :id, :name) %>
+  </div>
 
   <div class="field">
     <%= form.label :title %>

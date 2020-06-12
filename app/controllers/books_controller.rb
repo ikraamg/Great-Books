@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
+  before_action :send_categories, only: %i[new edit update create]
 
   # GET /books
   def index
@@ -19,25 +20,28 @@ class BooksController < ApplicationController
 
   # POST /books
   def create
-    @book = Book.new(book_params)
+    @book = Book.new(book_params.except(:category))
     @book.author_id = current_user.id
 
-    if @book.save
+    if @book.save && @book.books_categories.build(category_id: params[:book][:category]).save
       redirect_to @book, notice: 'Book was successfully created.'
     else
+      @book.destroy
       render :new
     end
   end
 
   # PATCH/PUT /books/1
+  # rubocop:disable Layout/LineLength: Line is too long
   def update
-    if @book.update(book_params)
+    if @book.update(book_params.except(:category)) && @book.books_categories.update(category_id: params[:book][:category])
       redirect_to @book, notice: 'Book was successfully updated.'
     else
       render :edit
     end
   end
 
+  # rubocop:enable Layout/LineLength: Line is too long
   # DELETE /books/1
   def destroy
     @book.destroy
@@ -51,8 +55,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def send_categories
+    @categories = Category.all
+  end
+
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:title, :text, :image)
+    params.require(:book).permit(:title, :text, :image, :category)
   end
 end
