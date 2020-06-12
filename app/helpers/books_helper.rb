@@ -7,4 +7,8 @@ module BooksHelper
       link_to('Vote!', book_votes_path(book_id: book.id), method: :post)
     end
   end
+
+  def vote_count(book)
+    book.votes.count
+  end
 end
