@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_075827) do
+ActiveRecord::Schema.define(version: 2020_06_12_121833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(version: 2020_06_12_075827) do
     t.string "title"
     t.text "text"
     t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "books_categories", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_books_categories_on_book_id"
+    t.index ["category_id"], name: "index_books_categories_on_category_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "priority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,6 +64,8 @@ ActiveRecord::Schema.define(version: 2020_06_12_075827) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "books_categories", "books"
+  add_foreign_key "books_categories", "categories"
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "users"
 end
