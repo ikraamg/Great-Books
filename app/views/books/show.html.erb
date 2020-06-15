@@ -3,12 +3,12 @@
 </br>
 </br>
 <h2>
-  <strong><%= @book.title %></strong>
+  <strong class= 'orange'><%= @book.title %></strong>
 </h2>
-
+<% if @book.user == current_user %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', books_path %>
+<%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 </br>
 <p>
 <strong class="text-muted"><%= vote_or_unvote_btn(@book) %> </strong>
@@ -17,12 +17,13 @@
 </p>
 </br>
 <h5>
-  <strong>Author:</strong>
-  <%= @book.author_id %>
+  <strong class="orange">Author:</strong>
+  <%= @book.user.name %>
 </h5>
 
 <p>
   <strong>Story:</strong>
+  <br>
   <%= @book.text %>
 </p>
 

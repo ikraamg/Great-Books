@@ -22,7 +22,9 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1/edit
-  def edit; end
+  def edit
+    redirect_to @book and return false unless current_user == @book.user
+  end
 
   # POST /books
   def create
@@ -41,6 +43,8 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # rubocop:disable Layout/LineLength: Line is too long
   def update
+    redirect_to @book and return false unless current_user == @book.user
+
     if @book.update(book_params.except(:category)) && @book.books_categories.update(category_id: params[:book][:category])
       redirect_to @book, notice: 'Book was successfully updated.'
     else
@@ -51,6 +55,8 @@ class BooksController < ApplicationController
   # rubocop:enable Layout/LineLength: Line is too long
   # DELETE /books/1
   def destroy
+    redirect_to @book and return false unless current_user == @book.user
+
     @book.destroy
     redirect_to books_url, notice: 'Book was successfully destroyed.'
   end
