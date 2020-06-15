@@ -1,6 +1,6 @@
 <div class = 'row featured-row'>
 <div class="card featured">
-  <% if @top_book.photo.attached? %>
+  <% if @top_book && @top_book.photo.attached? %>
     <%= image_tag(@top_book.photo, class:"card-img featured-image")%>
   <% else %>
   <img
