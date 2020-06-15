@@ -6,12 +6,12 @@ RSpec.describe 'books/index', type: :view do
              Book.create!(
                author_id: 2,
                title: 'Title',
-               text: 'MyText',
+               text: 'MyText'
              ),
              Book.create!(
                author_id: 2,
                title: 'Title',
-               text: 'MyText',
+               text: 'MyText'
              )
            ])
   end

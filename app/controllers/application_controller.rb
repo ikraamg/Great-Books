@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :send_categories
-  
+
   protected
 
   def configure_permitted_parameters
@@ -13,5 +13,4 @@ class ApplicationController < ActionController::Base
   def send_categories
     @categories = Category.all
   end
-
 end

@@ -30,7 +30,7 @@ class BooksController < ApplicationController
     @book.author_id = current_user.id
 
     if @book.save
-       @book.books_categories.build(category_id: params[:book][:category]).save
+      @book.books_categories.build(category_id: params[:book][:category]).save
       redirect_to @book, notice: 'Book was successfully created.'
     else
       @book.destroy
@@ -64,6 +64,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:title, :text, :photo, category_ids:[])
+    params.require(:book).permit(:title, :text, :photo, category_ids: [])
   end
 end
