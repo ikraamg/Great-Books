@@ -169,6 +169,7 @@ button {
 .category {
   height: 25vh;
   max-width: 25vw;
+  min-width: 25vw;
 }
 
 .category .category-image {
@@ -176,6 +177,7 @@ button {
      object-fit: cover;
   height: 25vh;
   max-width: 25vw;
+  min-width: 25vw;
 }
 
 .category-row {

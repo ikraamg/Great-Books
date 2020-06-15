@@ -1,11 +1,21 @@
 <div class = 'row featured-row'>
 <div class="card featured">
-  <img class="card-img featured-image" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555447414l/44767458.jpg" alt="Card image">
+  <% if @top_book.photo.attached? %>
+    <%= image_tag(@top_book.photo, class:"card-img featured-image")%>
+  <% else %>
+  <img
+    class=card-img featured-image"
+    src="https://c0.wallpaperflare.com/preview/597/540/971/various-book-books-education.jpg"
+    alt="Card image"
+    />
+  <% end %>
   <div class="card-img-overlay d-flex h-100 flex-column justify-content-end">
     <h1 class="card-title orange"><%= @top_book.title if @top_book %></h1>
     </br>
     <h4 class="card-text overflow-custom lines-less"><%= @top_book.text if @top_book %></h4>
+    <% if @top_book %>
     <h6> <%= button_to  "Read More", book_path(@top_book.id), class: 'orange', method: 'get' %> </h6>
+    <% end %>
     </br>
   </div>
   
@@ -15,9 +25,16 @@
 <div class = 'row category-row'>
 <% @categories.each do |category| %>
 
-
 <div class="card category">
-  <img class="card-img category-image" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555447414l/44767458.jpg" alt="Card image">
+  <% if category.books.all.first && category.books.all.first.photo.attached? %>
+    <%= image_tag(category.books.all.first.photo, class:"card-img category-image")%>
+  <% else %>
+  <img
+    class="card-img category-image"
+    src="https://c0.wallpaperflare.com/preview/597/540/971/various-book-books-education.jpg"
+    alt="Category image"
+    />
+  <% end %>
   <div class="card-img-overlay d-flex h-100 flex-column">
     <h2 class="card-title"><%= link_to category.name, category_display_path(category: category.id), class: 'text-white dark' %></h2>
     </br>

@@ -10,11 +10,15 @@
     <% if @books[@i].categories.exists?(@category) %> 
     <% if @c.even? %>
     <div class="card m-2 card-cat">
+      <% if @books[@i].photo.attached? %>
+      <%= image_tag(@books[@i].photo, class:"card-img-top")%>
+      <% else %>
       <img
         class="card-img-top"
-        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555447414l/44767458.jpg"
+        src="https://c0.wallpaperflare.com/preview/597/540/971/various-book-books-education.jpg"
         alt="Card image cap"
       />
+      <% end %>
       <div class="card-body">
         <h4 class="card-title orange"><%= @category_name %></h4>
         <h4 class="card-title"><%= @books[@i].title %></h4>
@@ -51,11 +55,15 @@
           <small class="text-muted"><%= vote_or_unvote_btn(@books[@i]) %> <%=[@books[@i].votes.size] %></small>
         </p>
       </div>
+      <% if @books[@i].photo.attached? %>
+      <%= image_tag(@books[@i].photo, class:"card-img-bottom")%>
+      <% else %>
       <img
         class="card-img-bottom"
-        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555447414l/44767458.jpg"
+        src="https://c0.wallpaperflare.com/preview/597/540/971/various-book-books-education.jpg"
         alt="Card image cap"
       />
+      <% end %>
     </div>
     <% end %>
     <% else %>
