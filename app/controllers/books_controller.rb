@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   # GET /books
   def index
     @categories = Category.all
-    @top_book = Book.all.min_by { |book| book.votes.size }
+    @top_book = Book.all.max_by { |book| book.votes.size }
   end
 
   def category
@@ -31,7 +31,8 @@ class BooksController < ApplicationController
     @book = Book.new(book_params.except(:category))
     @book.author_id = current_user.id
 
-    if @book.save && @book.books_categories.build(category_id: params[:book][:category]).save
+    if @book.save
+       @book.books_categories.build(category_id: params[:book][:category]).save
       redirect_to @book, notice: 'Book was successfully created.'
     else
       @book.destroy
@@ -69,6 +70,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:title, :text, :category, :photo)
+    params.require(:book).permit(:title, :text, :photo, category_ids:[])
   end
 end

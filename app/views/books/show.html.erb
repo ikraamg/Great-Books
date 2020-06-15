@@ -14,10 +14,14 @@
   <%= @book.text %>
 </p>
 
+<span class="text-muted"><%= vote_or_unvote_btn(@book) %> <%=[@book.votes.size] %></span>
+
+
 <p>
   <strong>Image:</strong>
   <%= image_tag(@book.photo, width: 200) if @book.photo.attached? %>
 </p>
+
 
 
 
