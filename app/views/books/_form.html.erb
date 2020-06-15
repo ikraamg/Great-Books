@@ -12,7 +12,7 @@
   <% end %>
 
 <div class="field">
-  <%= form.label "Categories of the Story" %><br />
+  <%= form.label "Categories of the Story (can select more than one)" %>
   <%= form.collection_check_boxes :category_ids, @categories, :id, :name do |b| %>
     <div class="d-flex>
       <%= b.label %>
@@ -20,22 +20,24 @@
     </div>
   <% end %>
 </div>
-
-  <div class="field">
+</br>
+  <div class="field form-group">
     <%= form.label :title_of_story %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: 'form-control'  %>
   </div>
-
-  <div class="field">
+</br>
+  <div class="field form-group">
     <%= form.label :story_body %>
-    <%= form.text_area :text %>
+    <%= form.text_area :text, class: 'form-control' %>
   </div>
-  
-  <div class="field">
-    <%= form.label :feaured_story_image %>
+  </br>
+  <div class="field form-group">
+    <%= form.label :Cover_image %>
     <%= form.file_field :photo %>
   </div>
+  </br>
   <div class="actions">
     <%= form.submit %>
   </div>
+  </br>
 <% end %>

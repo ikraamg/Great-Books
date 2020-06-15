@@ -1,25 +1,30 @@
-
+</br>
+</br>
+</br>
+</br>
+<h2>
+  <strong><%= @book.title %></strong>
+</h2>
+</br>
 <p>
+<strong class="text-muted"><%= vote_or_unvote_btn(@book) %> </strong>
+
+<strong>Total Votes: <%=[@book.votes.size] %></strong>
+</p>
+</br>
+<h5>
   <strong>Author:</strong>
   <%= @book.author_id %>
-</p>
+</h5>
 
 <p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Text:</strong>
+  <strong>Story:</strong>
   <%= @book.text %>
 </p>
 
-<span class="text-muted"><%= vote_or_unvote_btn(@book) %> <%=[@book.votes.size] %></span>
-
-
 <p>
-  <strong>Image:</strong>
-  <%= image_tag(@book.photo, width: 200) if @book.photo.attached? %>
+  <strong>Cover Image:</strong>
+  <%= image_tag(@book.photo, width: 500) if @book.photo.attached? %>
 </p>
 
 

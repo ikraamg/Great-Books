@@ -11,9 +11,7 @@
 body {
   background-color: #fff;
   color: #333;
-  max-width: 1550px;
   min-width: 350px;
-  margin: 0 auto;
 }
 
 body,
@@ -21,7 +19,7 @@ p,
 ol,
 ul,
 td {
-  font-family: 'Lato';
+  font-family: Lato, Arial, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -33,7 +31,7 @@ h4,
 h5,
 h6,
 a {
-  font-weight: 600;
+  font-weight: 800;
 }
 
 pre {
@@ -55,6 +53,13 @@ a:hover {
 div.field,
 div.actions {
   margin-bottom: 10px;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+}
+
+.remming {
+  font-size: 1.5rem;
+  line-height: 1.7rem;
 }
 
 #notice {
@@ -145,19 +150,16 @@ button {
 .featured {
   height: 50vh;
   width: 100%;
-  max-width: 1590px;
 
   .featured-image {
     object-fit: cover;
     height: 50vh;
     width: 100%;
-    max-width: 1590px;
   }
 }
 
 .featured-row {
   width: 100vw;
-  max-width: 1590px;
 }
 
 .card-cat {
@@ -203,5 +205,5 @@ button {
 
 .category-row {
   width: 100vw;
-  max-width: 1590px;
+  margin-bottom: 110px;
 }

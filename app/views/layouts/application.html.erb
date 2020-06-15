@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GreatBooks</title>
+    <title>GreatShorts</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="apple-touch-icon" sizes="180x180" href="/app/assets/images/favicon/apple-touch-icon.png">
@@ -12,37 +12,41 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
+  
   <body>
-  <nav class="navbar navbar-custom">
-  <%= link_to 'GreatBooks', root_path, class: 'navbar-brand p-1' %>
+  <nav class="navbar navbar-custom fixed-top">
+  <%= link_to 'GreatShorts', root_path, class: 'navbar-brand p-1' %>
   <span class= 'orange dot'>.</span>
   
       <div class="nav-item ml-2 ">
-        <%= link_to 'Home', root_path, class:"nav-link orange"%>
+        <%= link_to 'Home', root_path, class:"nav-link orange  text-uppercase"%>
       </div>
 
       <div class="nav-item mr-auto">
-        <%= link_to 'Write a Review', new_book_path, class:"nav-link"%>
+        <%= link_to 'Write a Story', new_book_path, class:"nav-link text-uppercase"%>
       </div>
-
+      <div class="nav-item d-flex justify-content-around w-50 mr-auto ml-auto ">
+      <% @categories.each do |category| %>
+         <h6 cla> <%= link_to category.name, category_display_path(category: category.id), class: 'orange' %> </h6>
+      <% end %>
+      </div>
   <% if current_user %>
-    <div class="nav-item mr-5">
-        Current-User: <%= current_user.name ? current_user.name : current_user.email %>
+    <div class="nav-item mr-5 font-weight-bold font-italic ml-auto">
+        User: <%= current_user.name ? current_user.name : current_user.email %>
     </div>
 
     <div class="nav-item">
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'p-2'%>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'p-2  text-uppercase'%>
     </div>
 
     
   <% else %>
     <div class="nav-item mr-3">
-      <%= link_to 'Sign in', user_session_path %>
+      <%= link_to 'Sign in', user_session_path, class: 'text-uppercase' %>
     </div>
 
     <div class="nav-item">
-      <%= link_to 'Register', new_user_registration_path %>
+      <%= link_to 'Register', new_user_registration_path, class: 'text-uppercase' %>
     </div>
 
   <% end %>
@@ -57,8 +61,8 @@
     <%= yield %>
 
 
-    <footer class="navbar footer-custom navbar-custom">
-       <%= link_to 'GreatBooks', root_path, class: 'navbar-brand ml-4 white p-1' %>
+    <footer class="navbar footer-custom navbar-custom fixed-bottom">
+       <%= link_to 'GreatShorts', root_path, class: 'navbar-brand ml-4 white p-1' %>
        <span class= 'orange dot'>.</span>
 
       <div class="nav-item ml-auto">

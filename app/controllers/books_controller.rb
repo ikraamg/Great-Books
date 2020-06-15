@@ -1,11 +1,9 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-  before_action :send_categories, only: %i[new edit update create]
   before_action :authenticate_user!
 
   # GET /books
   def index
-    @categories = Category.all
     @top_book = Book.all.max_by { |book| book.votes.size }
   end
 
@@ -62,10 +60,6 @@ class BooksController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_book
     @book = Book.find(params[:id])
-  end
-
-  def send_categories
-    @categories = Category.all
   end
 
   # Only allow a list of trusted parameters through.
