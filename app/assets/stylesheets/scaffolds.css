@@ -29,7 +29,7 @@ a:hover {
 }
 
 .dark:hover {
-  background-color: rgb(255, 145, 1);
+  background-color: #ff9101;
 }
 
 div.field,
@@ -94,45 +94,46 @@ button {
   border-color: #f76108;
   border-style: solid;
   font-size: 1.1em;
+}
 
-  .orange {
-    color: #f76108;
-  }
+.navbar-custom .orange {
+  color: #f76108;
+}
 
-  a {
-    color: #4e443e;
-  }
+.navbar-custom a {
+  color: #4e443e;
+}
 
-  .dot {
-    font-size: 50px;
-    margin-left: -22px;
-    margin-top: -18px;
-  }
+.navbar-custom .dot {
+  font-size: 50px;
+  margin-left: -22px;
+  margin-top: -18px;
 }
 
 .footer-custom {
   background-color: #4e443e;
+}
 
-  .white {
-    color: white;
-  }
+.footer-custom .white {
+  color: white;
+}
 
-  .icon {
-    font-size: 1.1rem;
-  }
+.footer-custom .icon {
+  font-size: 1.1rem;
 }
 
 .featured {
   height: 50vh;
   width: 100%;
   max-width: 1590px;
+}
 
-  .featured-image {
-    object-fit: cover;
-    height: 50vh;
-    width: 100%;
-    max-width: 1590px;
-  }
+.featured .featured-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 50vh;
+  width: 100%;
+  max-width: 1590px;
 }
 
 .featured-row {
@@ -147,16 +148,14 @@ button {
 .card-img-top,
 .card-img-bottom {
   height: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .overflow-custom {
   --lh: 1.4rem;
-
   line-height: var(--lh);
-
   --max-lines: 6;
-
   max-height: calc(var(--lh) * var(--max-lines));
   overflow: hidden;
 }
@@ -164,22 +163,23 @@ button {
 .lines-less {
   --max-lines: 2;
   --lh: 2rem;
-
   color: white;
 }
 
 .category {
   height: 25vh;
   max-width: 25vw;
+}
 
-  .category-image {
-    object-fit: cover;
-    height: 25vh;
-    max-width: 25vw;
-  }
+.category .category-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 25vh;
+  max-width: 25vw;
 }
 
 .category-row {
   width: 100vw;
   max-width: 1590px;
 }
+/*# sourceMappingURL=scaffolds.css.map */

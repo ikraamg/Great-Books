@@ -3,9 +3,9 @@ class VotesController < ApplicationController
     @vote = current_user.votes.new(book_id: params[:book_id])
 
     if @vote.save
-      redirect_to books_path, notice: 'You upvoted a book.'
+      redirect_back(fallback_location: root_path, notice: 'You upvoted a book.')
     else
-      redirect_to books_path, alert: 'You cannot upvote this book.'
+      redirect_back(fallback_location: root_path, alert: 'You cannot upvote this book.')
     end
   end
 
@@ -13,9 +13,9 @@ class VotesController < ApplicationController
     vote = Vote.find_by(id: params[:id], user: current_user, book_id: params[:book_id])
     if vote
       vote.destroy
-      redirect_to books_path, notice: 'You unvoted a book.'
+      redirect_back(fallback_location: root_path, notice: 'You removed your vote')
     else
-      redirect_to books_path, alert: 'You cannot unvote book that you did not vote before.'
+      redirect_back(fallback_location: root_path, alert: 'You cannot remove your vote from a book that you did not vote for before.')
     end
   end
 end

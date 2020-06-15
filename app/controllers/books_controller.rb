@@ -1,10 +1,19 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :send_categories, only: %i[new edit update create]
+  before_action :authenticate_user!
 
   # GET /books
   def index
+    @categories = Category.all
+    @top_book = Book.all.sort_by{|book| book.votes.size}.first
+  end
+
+  def category
+    @category = params[:category]
+    @category_name = Category.find(@category).name
     @books = Book.all
+
   end
 
   # GET /books/1

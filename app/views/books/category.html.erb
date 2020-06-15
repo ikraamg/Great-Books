@@ -1,0 +1,68 @@
+<br />
+<h2 class="orange">Category Page</h2>
+<br />
+
+<div class="container-fluid">
+  <div class="row card-rows">
+    <% @i = 0 %>
+    <% @c = 0 %>
+    <% while @i < @books.count %>
+    <% if @books[@i].categories.exists?(@category) %> 
+    <% if @c.even? %>
+    <div class="card m-2 card-cat">
+      <img
+        class="card-img-top"
+        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555447414l/44767458.jpg"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h4 class="card-title orange"><%= @category_name %></h4>
+        <h4 class="card-title"><%= @books[@i].title %></h4>
+        <h5 class="card-title orange"><%= @books[@i].user.name %></h5>
+        <p class="card-text overflow-custom">
+          <%= @books[@i].text %> 
+          
+        </p>
+        <p class="card-text">
+          <%= link_to  "Read More", @books[@i], class: 'orange' %>
+        </p>
+
+        <p class="card-text">
+          <small class="text-muted"><%= vote_or_unvote_btn(@books[@i]) %> <%=[@books[@i].votes.size] %></small>
+        </p>
+      </div>
+    </div>
+    <% end %>
+    
+    <% if @c.odd? %>
+    <div class="card m-2 card-cat">
+      <div class="card-body">
+        <h4 class="card-title orange"><%= @category_name %></h4>
+        <h4 class="card-title"><%= @books[@i].title %></h4>
+        <h5 class="card-title orange"><%= @books[@i].user.name %></h5>
+        <p class="card-text overflow-custom">
+          <%= @books[@i].text %> 
+        </p>
+        <p class="card-text">
+          <%= link_to  "Read More", @books[@i], class: 'orange' %>
+        </p>
+
+        <p class="card-text">
+          <small class="text-muted"><%= vote_or_unvote_btn(@books[@i]) %> <%=[@books[@i].votes.size] %></small>
+        </p>
+      </div>
+      <img
+        class="card-img-bottom"
+        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1555447414l/44767458.jpg"
+        alt="Card image cap"
+      />
+    </div>
+    <% end %>
+    <% else %>
+    <% @c -= 1 %>
+    <% end %>
+    <% @i += 1 %>
+    <% @c += 1 %>
+  <% end %>
+  </div>
+</div>
