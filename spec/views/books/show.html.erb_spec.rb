@@ -6,7 +6,6 @@ RSpec.describe 'books/show', type: :view do
                             author_id: 2,
                             title: 'Title',
                             text: 'MyText',
-                            image: 'Image'
                           ))
   end
 
@@ -15,6 +14,5 @@ RSpec.describe 'books/show', type: :view do
     expect(rendered).to match(/2/)
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/Image/)
   end
 end

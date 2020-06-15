@@ -16,10 +16,10 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @book.image %>
+  <%= image_tag(@book.photo, width: 200) if @book.photo.attached? %>
 </p>
 
-<%= image_tag(@book.photo, width: 200) if @book.photo.attached? %>
+
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |

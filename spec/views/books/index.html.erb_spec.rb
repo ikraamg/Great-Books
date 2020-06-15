@@ -7,13 +7,11 @@ RSpec.describe 'books/index', type: :view do
                author_id: 2,
                title: 'Title',
                text: 'MyText',
-               image: 'Image'
              ),
              Book.create!(
                author_id: 2,
                title: 'Title',
                text: 'MyText',
-               image: 'Image'
              )
            ])
   end
@@ -23,6 +21,5 @@ RSpec.describe 'books/index', type: :view do
     assert_select 'tr>td', text: 2.to_s, count: 2
     assert_select 'tr>td', text: 'Title'.to_s, count: 2
     assert_select 'tr>td', text: 'MyText'.to_s, count: 2
-    assert_select 'tr>td', text: 'Image'.to_s, count: 2
   end
 end

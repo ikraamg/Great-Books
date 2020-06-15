@@ -6,7 +6,6 @@ RSpec.describe 'books/edit', type: :view do
                             author_id: 1,
                             title: 'MyString',
                             text: 'MyText',
-                            image: 'MyString'
                           ))
   end
 
@@ -19,8 +18,6 @@ RSpec.describe 'books/edit', type: :view do
       assert_select 'input[name=?]', 'book[title]'
 
       assert_select 'textarea[name=?]', 'book[text]'
-
-      assert_select 'input[name=?]', 'book[image]'
     end
   end
 end
