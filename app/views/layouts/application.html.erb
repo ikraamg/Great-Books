@@ -4,7 +4,10 @@
     <title>GreatBooks</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="apple-touch-icon" sizes="180x180" href="/app/assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/app/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/app/assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/app/assets/images/favicon/site.webmanifest">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -64,7 +67,6 @@
 
       <div class="nav-item ml-auto">
         <%= link_to 'Contact Site Developer:  ', 'mailto:consult.ikraam@gmail.com', class:"nav-link white"%>
-      </div>
 
       <%= link_to 'https://github.com/ikraamg' do %>
         <%= fa_icon "github", class: 'orange icon p-3' %>
@@ -77,7 +79,7 @@
       <%= link_to 'https://www.linkedin.com/in/isghoor/' do %>
         <%= fa_icon "linkedin", class: 'orange p-3 icon' %>
       <% end %>
-
+    </div>
 
     </footer>
   </body>

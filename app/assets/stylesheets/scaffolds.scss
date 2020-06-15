@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'CartoGoth';
+  src: url('/app/assets/fonts/CartoGothicStd-Book.otf');
+  font-family: 'Chivo-Black';
+  src: url('/app/assets/fonts/Chivo-Black.otf');
+  font-family: 'Lato';
+  src: url('/app/assets/fonts/Lato-Black.ttf');
+  src: url(/app/assets/images/favicon/android-chrome-192x192.png);
+}
+
 body {
   background-color: #fff;
   color: #333;
@@ -11,9 +21,19 @@ p,
 ol,
 ul,
 td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Lato';
   font-size: 13px;
   line-height: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-weight: 600;
 }
 
 pre {
