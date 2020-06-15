@@ -6,14 +6,13 @@ class BooksController < ApplicationController
   # GET /books
   def index
     @categories = Category.all
-    @top_book = Book.all.sort_by{|book| book.votes.size}.first
+    @top_book = Book.all.min_by { |book| book.votes.size }
   end
 
   def category
     @category = params[:category]
     @category_name = Category.find(@category).name
     @books = Book.all
-
   end
 
   # GET /books/1

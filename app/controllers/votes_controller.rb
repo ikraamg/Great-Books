@@ -15,7 +15,7 @@ class VotesController < ApplicationController
       vote.destroy
       redirect_back(fallback_location: root_path, notice: 'You removed your vote')
     else
-      redirect_back(fallback_location: root_path, alert: 'You cannot remove your vote from a book that you did not vote for before.')
+      redirect_back(fallback_location: root_path, alert: 'You have not voted as yet')
     end
   end
 end
