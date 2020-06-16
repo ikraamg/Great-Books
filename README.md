@@ -13,6 +13,16 @@
 
 - The project was deployed on Heroku: [Live Demo Link](https://great-books-site.herokuapp.com/)
 
+## Screenshots
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/34813339/84836200-8f2bf780-b035-11ea-9421-a5c2a4666f9f.png"/>
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/34813339/84836184-876c5300-b035-11ea-9131-0bf30d7700b5.png"/>
+</p>
+
 ## Built With
 
 - Ruby 2.6.5 and Rails 5.2.4.2
