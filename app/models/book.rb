@@ -5,4 +5,7 @@ class Book < ApplicationRecord
   has_many :categories, through: :books_categories
   has_one_attached :photo
   default_scope { order(created_at: :desc) }
+  validates :author_id, presence: true
+  validates :title, presence: true
+  validates :text, presence: true
 end
