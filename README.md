@@ -1,8 +1,15 @@
 [![hire-badge](https://img.shields.io/badge/Consult%20/%20Hire%20Ikraam-Click%20to%20Contact-brightgreen)](mailto:consult.ikraam@gmail.com) [![Twitter Follow](https://img.shields.io/twitter/follow/GhoorIkraam?label=Follow%20Ikraam%20on%20Twitter&style=social)](https://twitter.com/GhoorIkraam)
 
-# Great Shorts
+# Great Shorts - The community driven short-story sharing site
 
-> Book Rating and Review Site.
+> This site is a community driven short-story sharing site allows users to write and upvote their favourite stories.
+> The applicaiton has Google and Github (OmniAuth) sign in options in adition to a standard login.
+> Built with RESTful routes, a user can create, edit, delete and upvote articles.
+> The short-stories are catagorised into various genres and links to each catagory can be found on the homepage bottom blocks which feature the most recent story written for the genre.
+> The story with most number of votes is displayed in the large featured section of the homepage.
+
+<!--
+> The project is developed using Ruby on Rails and embedded ruby for templating. Navbar is dynamicaly generated from categories, only user with username as 'admin' can add or delete categories. Unit tests and integration tests are written using RSpec and Capybara -->
 
 ## Live Demo
 
@@ -11,7 +18,7 @@
 ## Built With
 
 - Ruby 2.6.5 and Rails 5.2.4.2
-- Bootsrap 4
+- Bootstrap 4
 - Deployed on Heroku
 
 ## Getting Started
