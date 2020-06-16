@@ -75,7 +75,7 @@ class BooksController < ApplicationController
   end
 
   def send_categories
-    @categories = Category.all
+    @categories = Category.includes(:books).limit(4)
   end
 
 end
