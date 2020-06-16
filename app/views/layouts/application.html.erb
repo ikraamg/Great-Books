@@ -4,10 +4,7 @@
     <title>GreatShorts</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="apple-touch-icon" sizes="180x180" href="/app/assets/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/app/assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/app/assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/app/assets/images/favicon/site.webmanifest">
+    <%= favicon_link_tag asset_path('favicon-32x32') %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
