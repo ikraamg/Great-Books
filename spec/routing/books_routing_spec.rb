@@ -33,5 +33,9 @@ RSpec.describe BooksController, type: :routing do
     it 'routes to #destroy' do
       expect(delete: '/books/1').to route_to('books#destroy', id: '1')
     end
+
+    it 'routes to #category' do
+      expect(get: '/category?category=1').to route_to('books#category', category: '1')
+    end
   end
 end
