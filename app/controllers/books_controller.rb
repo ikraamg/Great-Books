@@ -4,13 +4,13 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @top_book = Book.all.max_by { |book| book.votes.size }
+    @top_book = Book.all.includes(photo_attachment: :blob).max_by { |book| book.votes.size }
   end
 
   def category
     @category = params[:category]
     @category_name = Category.find(@category).name
-    @books = Book.all
+    @books = Book.includes(:user, photo_attachment: :blob)
   end
 
   # GET /books/1
