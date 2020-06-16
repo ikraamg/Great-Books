@@ -7,14 +7,13 @@
 
 <div class="container-fluid">
   <div class="row card-rows">
-    <% @i = 0 %>
     <% @c = 0 %>
-    <% while @i < @books.count %>
-    <% if @books[@i].categories.exists?(@category) %> 
+    <% @books.each do |book| %>
+    <% if book.categories.exists?(@category) %> 
     <% if @c.even? %>
     <div class="card m-2 card-cat">
-      <% if @books[@i].photo.attached? %>
-      <%= image_tag(@books[@i].photo, class:"card-img-top")%>
+      <% if book.photo.attached? %>
+      <%= image_tag(book.photo, class:"card-img-top")%>
       <% else %>
       <img
         class="card-img-top"
@@ -24,18 +23,18 @@
       <% end %>
       <div class="card-body">
         <h4 class="card-title orange"><%= @category_name %></h4>
-        <h4 class="card-title"><%= @books[@i].title %></h4>
-        <h5 class="card-title orange"><%= @books[@i].user.name %></h5>
+        <h4 class="card-title"><%= book.title %></h4>
+        <h5 class="card-title orange"><%= book.user.name %></h5>
         <p class="card-text overflow-custom">
-          <%= @books[@i].text %> 
+          <%= book.text %> 
           
         </p>
         <p class="card-text">
-          <%= link_to  "Read More", @books[@i], class: 'orange' %>
+          <%= link_to  "Read More", book, class: 'orange' %>
         </p>
 
         <p class="card-text">
-          <small class="text-muted"><%= vote_or_unvote_btn(@books[@i]) %> <%=[@books[@i].votes.size] %></small>
+          <small class="text-muted"><%= vote_or_unvote_btn(book) %> <%=[book.votes.size] %></small>
         </p>
       </div>
     </div>
@@ -45,21 +44,21 @@
     <div class="card m-2 card-cat">
       <div class="card-body">
         <h4 class="card-title orange"><%= @category_name %></h4>
-        <h4 class="card-title"><%= @books[@i].title %></h4>
-        <h5 class="card-title orange"><%= @books[@i].user.name %></h5>
+        <h4 class="card-title"><%= book.title %></h4>
+        <h5 class="card-title orange"><%= book.user.name %></h5>
         <p class="card-text overflow-custom">
-          <%= @books[@i].text %> 
+          <%= book.text %> 
         </p>
         <p class="card-text">
-          <%= link_to  "Read More", @books[@i], class: 'orange' %>
+          <%= link_to  "Read More", book, class: 'orange' %>
         </p>
 
         <p class="card-text">
-          <small class="text-muted"><%= vote_or_unvote_btn(@books[@i]) %> <%=[@books[@i].votes.size] %></small>
+          <small class="text-muted"><%= vote_or_unvote_btn(book) %> <%=[book.votes.size] %></small>
         </p>
       </div>
-      <% if @books[@i].photo.attached? %>
-      <%= image_tag(@books[@i].photo, class:"card-img-bottom")%>
+      <% if book.photo.attached? %>
+      <%= image_tag(book.photo, class:"card-img-bottom")%>
       <% else %>
       <img
         class="card-img-bottom"
@@ -72,7 +71,6 @@
     <% else %>
     <% @c -= 1 %>
     <% end %>
-    <% @i += 1 %>
     <% @c += 1 %>
   <% end %>
   </div>
