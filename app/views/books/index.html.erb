@@ -24,10 +24,10 @@
 
 <div class = 'row category-row'>
 <% @categories.each do |category| %>
-
+<% current_book = category.books.first %>
 <div class="card category">
-  <% if category.books.all.first && category.books.all.first.photo.attached? %>
-    <%= image_tag(category.books.all.first.photo, class:"card-img category-image")%>
+  <% if current_book && current_book.photo.attached? %>
+    <%= image_tag(current_book.photo, class:"card-img category-image")%>
   <% else %>
   <img
     class="card-img category-image"
@@ -38,7 +38,7 @@
   <div class="card-img-overlay d-flex h-100 flex-column">
     <h2 class="card-title"><%= link_to category.name, category_display_path(category: category.id), class: 'text-white dark' %></h2>
     </br>
-    <h5 class="card-text overflow-custom text-white mt-auto "><%= category.books.all.first.title if category.books.all.first %></h5>
+    <h5 class="card-text overflow-custom text-white mt-auto "><%= current_book.title if current_book %></h5>
     </br>
   </div>
 </div>
