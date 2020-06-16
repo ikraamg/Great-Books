@@ -8,7 +8,7 @@ module BooksHelper
     end
   end
 
-   def standard_image
+  def standard_image
     'https://c0.wallpaperflare.com/preview/597/540/971/various-book-books-education.jpg'
   end
 end
