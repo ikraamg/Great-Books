@@ -1,19 +1,17 @@
 [![hire-badge](https://img.shields.io/badge/Consult%20/%20Hire%20Ikraam-Click%20to%20Contact-brightgreen)](mailto:consult.ikraam@gmail.com) [![Twitter Follow](https://img.shields.io/twitter/follow/GhoorIkraam?label=Follow%20Ikraam%20on%20Twitter&style=social)](https://twitter.com/GhoorIkraam)
 
-# Great Shorts - The community driven short-story sharing site
+# Great Shorts - The community-driven short-story sharing site
 
-> This site is a community driven short-story sharing site allows users to write and upvote their favourite stories.
-> The applicaiton has Google and Github (OmniAuth) sign in options in adition to a standard login.
-> Built with RESTful routes, a user can create, edit, delete and upvote articles.
-> The short-stories are catagorised into various genres and links to each catagory can be found on the homepage bottom blocks which feature the most recent story written for the genre.
-> The story with most number of votes is displayed in the large featured section of the homepage.
-
-<!--
-> The project is developed using Ruby on Rails and embedded ruby for templating. Navbar is dynamicaly generated from categories, only user with username as 'admin' can add or delete categories. Unit tests and integration tests are written using RSpec and Capybara -->
+> This site is a community-driven short-story sharing site that allows users to write and upvote their favourite stories.
+> The application has Google and Github (OmniAuth) sign in options in addition to a standard login.
+> Built in Ruby on Rails: A user can create, edit, delete and upvote articles.
+> The short-stories are categorized into various genres and links to each category can be found on the homepage bottom blocks which feature the most recent story written for the genre.
+> The story with the most number of votes is displayed in the large featured section of the homepage.
+> RSpec and Capybara were used to run the unit and integration tests.
 
 ## Live Demo
 
-[Live Demo Link](https://great-books-site.herokuapp.com/)
+- The project was deployed on Heroku: [Live Demo Link](https://great-books-site.herokuapp.com/)
 
 ## Built With
 
@@ -27,21 +25,47 @@ To get a local copy up and running follow these steps:
 
 ### Prerequisites
 
-- Ruby installed on local machine
+- Ruby: 2.6.3
+- Rails: 5.2.3
+- Postgres: >=9.5
+- Git
 
 ### Usage
 
 - Fork/Clone this project to your local machine
-- Open folder in your local enviroment and run thes lines of code to get started:
+- Open the folder in your local environment and run these lines of code to get started:
+
+Install gems with:
 
 ```Ruby
-cd <repo-name>
-bundle install
-rails db:migrate
-rails s
+    bundle install
+```
+
+Setup database with:
+
+```Ruby
+   rails DB:create
+   rails DB:migrate
+```
+
+Start server with:
+
+```Ruby
+    rails server
+```
+
+### Running tests
+
+```Ruby
+    bundle exec RSpec --format documentation
 ```
 
 - Open a web page and go to [port 3000 on your local machine.](http://localhost:3000)
+
+### Deployment
+
+The application was deployed on Heroku.
+To deploy your own copy, you can follow the following [steps:](https://devcenter.heroku.com/articles/git)
 
 ## Authors
 
@@ -63,10 +87,10 @@ Start by:
 - Forking the project
 - Cloning the project to your local machine
 - `cd` into the project directory
-- Run `git checkout -b your-branch-name`
+- Run `git checkout -b your-branch-name.`
 - Make your contributions
 - Push your branch up to your forked repository
-- Open a Pull Request with a detailed description to the development(or master if not available) branch of the original project for a review
+- Open a Pull Request with a detailed description of the development(or master if not available) branch of the original project for a review
 
 ## Show your support
 
@@ -78,4 +102,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](LICENSE) licensed with the exception of the design, which is is under the [Creative Commons License](https://creativecommons.org/licenses/by-nc-nd/4.0/) and attributed to [Nelson Sakwa](https://www.behance.net/sakwadesignstudio).
+This project is [MIT](LICENSE) licensed with the exception of the design, which is under the [Creative Commons License](https://creativecommons.org/licenses/by-nc-nd/4.0/) and attributed to [Nelson Sakwa](https://www.behance.net/sakwadesignstudio).
