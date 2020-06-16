@@ -36,9 +36,9 @@
     />
   <% end %>
   <div class="card-img-overlay d-flex h-100 flex-column">
-    <h2 class="card-title"><%= link_to category.name, category_display_path(category: category.id), class: 'text-white dark' %></h2>
+    <h2 class="card-title"><%= link_to category.name, category_display_path(category: category.id), class: 'text-white dark underlay' %></h2>
     </br>
-    <h5 class="card-text overflow-custom text-white mt-auto "><%= current_book.title if current_book %></h5>
+    <h5 class="card-text overflow-custom text-white mt-auto unerlay "><%= current_book.title if current_book %></h5>
     </br>
   </div>
 </div>
