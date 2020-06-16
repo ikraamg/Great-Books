@@ -12,6 +12,5 @@ RSpec.describe Book, type: :model do
     it { should have_many(:votes).dependent(:destroy) }
     it { should have_many(:categories).through(:books_categories) }
     it { should belong_to(:user).class_name('User').with_foreign_key(:author_id) }
-
   end
 end

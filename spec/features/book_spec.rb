@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 feature 'Book actions' do
   before(:each) do
     FactoryBot.create(:user)
@@ -15,7 +16,7 @@ feature 'Book actions' do
     find('form input[type="file"]').set('app/assets/images/favicon.png')
     click_on 'Create Book'
   end
-
+  # rubocop:enable Metrics/BlockLength
   scenario 'write new book' do
     expect(page).to have_content 'Lorem Ipsum'
   end
@@ -26,14 +27,13 @@ feature 'Book actions' do
     expect(page).not_to have_content 'Lorem Ipsum'
   end
 
-   scenario 'edit a created book' do
+  scenario 'edit a created book' do
     click_on 'Edit'
     expect(page).to have_content 'Editing Story'
     fill_in 'book[text]', with: 'Changed text of story'
     click_on 'Update Book'
     expect(page).to have_content 'Changed text of story'
     expect(page).to have_button 'Vote!'
-    
   end
 
   scenario 'Vote and downvote on a post' do
