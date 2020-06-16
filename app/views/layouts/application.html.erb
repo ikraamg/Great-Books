@@ -48,18 +48,8 @@
 
   <% end %>
   </nav>
-  <div>
-  <% unless flash.empty? %>
-   <script type="text/javascript">
-      <% flash.each do |f| %>
-    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-   	 toastr['<%= type %>']('<%= f[1] %>');
-   <% end %>
-   </script>
-<% end %>
-  </div>
-    <%= yield %>
-
+<%= yield %>
+<%= toastr_flash %>
 
     <footer class="navbar footer-custom navbar-custom fixed-bottom">
        <%= link_to 'GreatShorts', root_path, class: 'navbar-brand ml-4 white p-1' %>
