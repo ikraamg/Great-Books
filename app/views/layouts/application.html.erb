@@ -24,7 +24,7 @@
       </div>
       <div class="nav-item d-flex justify-content-around w-50 mr-auto ml-auto ">
       <% @categories.each do |category| %>
-         <h6 cla> <%= link_to category.name, category_display_path(category: category.id), class: 'orange' %> </h6>
+         <h6> <%= link_to category.name, category_display_path(category: category.id), class: 'orange' %> </h6>
       <% end %>
       </div>
   <% if current_user %>
@@ -48,13 +48,16 @@
 
   <% end %>
   </nav>
-
-  <% if notice %>
-    <p id="notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p id="error"><%= alert %></p>
-  <% end %>
+  <div>
+  <% unless flash.empty? %>
+   <script type="text/javascript">
+      <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+   	 toastr['<%= type %>']('<%= f[1] %>');
+   <% end %>
+   </script>
+<% end %>
+  </div>
     <%= yield %>
 
 
@@ -63,7 +66,7 @@
        <span class= 'orange dot'>.</span>
 
       <div class="nav-item ml-auto">
-        <%= link_to 'Original Visual Design is under the Creative Commons License of Nelson Sakwa ', 'https://www.behance.net/sakwadesignstudio', class:"nav-link white"%>
+        <%= link_to 'Original Visual Design is under the Creative Commons License', 'https://www.behance.net/sakwadesignstudio', class:"nav-link white"%>
       </div>
 
       <div class="nav-item ml-auto">
