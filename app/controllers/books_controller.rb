@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :send_categories
 
   # GET /books
   def index
@@ -72,4 +73,9 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :text, :photo, category_ids: [])
   end
+
+  def send_categories
+    @categories = Category.all
+  end
+
 end

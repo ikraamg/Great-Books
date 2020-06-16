@@ -23,8 +23,10 @@
         <%= link_to 'Write a Story', new_book_path, class:"nav-link text-uppercase"%>
       </div>
       <div class="nav-item d-flex justify-content-around w-50 mr-auto ml-auto ">
+      <% if @categories %>
       <% @categories.each do |category| %>
          <h6> <%= link_to category.name, category_display_path(category: category.id), class: 'orange' %> </h6>
+      <% end %>
       <% end %>
       </div>
   <% if current_user %>
