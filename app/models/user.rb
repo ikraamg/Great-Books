@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :books, foreign_key: 'author_id', class_name: 'Book', dependent: :destroy
   has_many :votes, dependent: :destroy
+  validates :name, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
