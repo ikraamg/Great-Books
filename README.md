@@ -2,15 +2,23 @@
 
 # Great Shorts - The community-driven short-story sharing site
 
-> This site is a community-driven short-story sharing site that allows users to write and upvote their favourite stories.
-> The application has Google and Github (OmniAuth) sign in options in addition to a standard login.
-> Built in Ruby on Rails: A user can create, edit, delete and upvote articles.
-> The short-stories are categorized into various genres and links to each category can be found on the homepage bottom blocks which feature the most recent story written for the genre.
-> The story with the most number of votes is displayed in the large featured section of the homepage.
-> Categories can be created/updated/deleted via the admin account (admin@admin.com). The top 4 prioritised catagories are displayed in the top-links and homepage.
-> RSpec and Capybara were used to run the unit and integration tests.
-> The 'bullet-gem' was used to identify cases of N+1 queries. N+1 queries were removed when found and unnecessary eager loading was also minimized.
-> Active Storage with Amazon s3 was used instead of local image storage as images don't persist on heroku free deployments.
+- This site is a community-driven short-story sharing site that allows users to write and upvote their favourite stories.
+
+- The application has Google and Github (OmniAuth) sign in options in addition to a standard login.
+
+- Built in Ruby on Rails: A user can create, edit, delete and upvote articles.
+
+- The short-stories are categorized into various genres and links to each category can be found on the homepage bottom blocks which feature the most recent story written for the genre.
+
+- The story with the most number of votes is displayed in the large featured section of the homepage.
+
+- Categories can be created/updated/deleted via the admin account (admin@admin.com). The top 4 prioritised catagories are displayed in the top-links and homepage.
+
+- RSpec and Capybara were used to run the unit and integration tests.
+
+- The 'bullet-gem' was used to identify cases of N+1 queries. N+1 queries were removed when found and unnecessary eager loading was also minimized.
+
+- Active Storage with Amazon s3 was used instead of local image storage as images don't persist on heroku free deployments.
 
 ## Live Demo and Presentation
 
