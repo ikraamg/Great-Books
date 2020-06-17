@@ -41,6 +41,10 @@ class BooksController < ApplicationController
     end
   end
 
+  def written
+    @books = Book.all.where(author_id: current_user.id).includes(:user, :categories, photo_attachment: :blob)
+  end
+
   # PATCH/PUT /books/1
   # rubocop:disable Layout/LineLength: Line is too long
   def update
@@ -75,6 +79,6 @@ class BooksController < ApplicationController
   end
 
   def send_categories
-    @categories = Category.includes(:books).limit(4)
+    @categories = Category.limit(4)
   end
 end

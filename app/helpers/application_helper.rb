@@ -8,4 +8,8 @@ module ApplicationHelper
       flash_messages << text.html_safe if message
     end.join("\n").html_safe
   end
+
+  def admin?
+    current_user == User.find_by(email: 'admin@admin.com')
+  end
 end
