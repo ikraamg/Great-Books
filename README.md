@@ -10,10 +10,12 @@
 > Categories can be created/updated/deleted via the admin account (admin@admin.com). The top 4 prioritised catagories are displayed in the top-links and homepage.
 > RSpec and Capybara were used to run the unit and integration tests.
 > The 'bullet-gem' was used to identify cases of N+1 queries. N+1 queries were removed when found and unnecessary eager loading was also minimized.
+> Active Storage with Amazon s3 was used instead of local image storage as images don't persist on heroku free deployments.
 
-## Live Demo
+## Live Demo and Presentation
 
 - The project was deployed on Heroku: [Live Demo Link](https://great-books-site.herokuapp.com/)
+- [Presentation Video](https://www.loom.com/share/c418e037437c4351977fa2f656165008)
 
 ## Screenshots
 
