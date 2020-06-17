@@ -1,0 +1,30 @@
+<% if admin? %>
+<h1 class= 'orange'>Categories Administration</h1>
+<% else %>
+<h1>All Categories</h1>
+<% end %>
+<br>
+
+<% @indexed_categories.each do |category| %>
+
+  <div class= 'form-delete'>
+    <%# If admin then show this else just show the categories links for each one %>
+
+    <% if admin? %>
+    <%= render 'form', category: category %>
+    <h4 class= 'ml-2' > <%= button_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %> </h4>
+    <h4 class= 'ml-2 mr-2' > Link to:  </h4>
+    <% end %>
+      <h4> <%= link_to category.name, category_display_path(category: category.id), class: 'orange' %> 
+  </h4>
+  </div>
+  </br>
+  </br>
+<% end %>
+
+<% if admin? %>
+</br>
+<h4 class= 'orange'>New Category</h4>
+</br>
+<%= render 'form', category: @category %>
+<% end %>
