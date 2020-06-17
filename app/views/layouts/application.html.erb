@@ -25,13 +25,14 @@
       <div class="nav-item d-flex justify-content-around w-50 mr-auto ml-auto ">
       <% if @categories %>
       <% @categories.each do |category| %>
-         <h6> <%= link_to category.name, category_display_path(category: category.id), class: 'orange' %> </h6>
+         <h6> <%= link_to category.name, category_display_path(category: category.id), class: 'orange text-uppercase' %> </h6>
       <% end %>
+        <h6> <%= link_to 'All Categories', categories_path, class: 'text-uppercase' %> </h6>
       <% end %>
       </div>
   <% if current_user %>
-    <div class="nav-item mr-5 font-weight-bold font-italic ml-auto">
-        User: <%= current_user.name ? current_user.name : current_user.email %>
+    <div class="nav-item mr-5 font-weight-bold ml-auto text-uppercase">
+        <%= link_to  "#{current_user.name ? current_user.name : current_user.email}'s Articles", users_books_path, class: 'orange' %>
     </div>
 
     <div class="nav-item">
@@ -50,9 +51,21 @@
 
   <% end %>
   </nav>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
 <%= yield %>
 <%= toastr_flash %>
-
+<% unless @top_book %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
     <footer class="navbar footer-custom navbar-custom fixed-bottom">
        <%= link_to 'GreatShorts', root_path, class: 'navbar-brand ml-4 white p-1' %>
        <span class= 'orange dot'>.</span>
@@ -78,6 +91,6 @@
     </div>
 
     </footer>
-    
+<% end %>
   </body>
 </html>

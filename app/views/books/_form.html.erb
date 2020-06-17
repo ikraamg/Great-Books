@@ -14,8 +14,9 @@
 <div class="field">
   <%= form.label "Categories of the Story (can select more than one)" %>
   <%= form.collection_check_boxes :category_ids, @categories, :id, :name do |b| %>
-    <div class="d-flex>
+    <div class="d-flex align-items-center ">
       <%= b.label %>
+      <span class='ml-2'></span>
       <%= b.check_box  %>
     </div>
   <% end %>

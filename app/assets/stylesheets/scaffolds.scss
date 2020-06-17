@@ -9,9 +9,12 @@
 }
 
 body {
-  background-color: #fff;
   color: #333;
   min-width: 350px;
+  max-width: 95vw;
+  margin: 0 auto;
+  overflow-x: hidden;
+  background-color: #36231617;
 }
 
 body,
@@ -150,22 +153,23 @@ button {
 }
 
 .featured {
-  height: 50vh;
+  height: 55vh;
   width: 100%;
 
   .featured-image {
     object-fit: cover;
-    height: 50vh;
+    height: 55vh;
     width: 100%;
   }
 }
 
 .featured-row {
-  width: 100vw;
+  width: 95vw;
 }
 
 .card-cat {
   width: 400px;
+  height: 500px;
 }
 
 .card-img-top,
@@ -179,7 +183,7 @@ button {
 
   line-height: var(--lh);
 
-  --max-lines: 6;
+  --max-lines: 1;
 
   max-height: calc(var(--lh) * var(--max-lines));
   overflow: hidden;
@@ -193,21 +197,22 @@ button {
 }
 
 .category {
-  height: 40vh;
-  max-width: 25vw;
-  min-width: 25vw;
+  height: 30vh;
+  max-width: 23.7vw;
+  min-width: 23.7vw;
 
   .category-image {
     object-fit: cover;
-    height: 40vh;
-    max-width: 25vw;
-    min-width: 25vw;
+    height: 30vh;
+    max-width: 23.7vw;
+    min-width: 23.7vw;
   }
 }
 
 .category-row {
-  width: 100vw;
+  width: 95vw;
   margin-bottom: 110px;
+  height: 50px;
 }
 
 .underlay {
@@ -215,4 +220,23 @@ button {
   text-decoration: underline;
   text-decoration-color: #f76108;
   padding: 0 3px;
+}
+
+.cat-form {
+  display: flex;
+}
+
+.inline-form {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+.form-delete {
+  display: flex;
+}
+
+.submit {
+  color: #f76108;
+  margin-left: 5px;
 }
