@@ -6,7 +6,7 @@ RSpec.describe Category, type: :model do
     it { should validate_presence_of(:priority) }
   end
   describe 'associations' do
-    it { should have_many(:books_categories) }
+    it { should have_many(:books_categories).dependent(:destroy) }
     it { should have_many(:books).through(:books_categories) }
   end
 end
