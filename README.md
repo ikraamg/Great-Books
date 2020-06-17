@@ -7,7 +7,9 @@
 > Built in Ruby on Rails: A user can create, edit, delete and upvote articles.
 > The short-stories are categorized into various genres and links to each category can be found on the homepage bottom blocks which feature the most recent story written for the genre.
 > The story with the most number of votes is displayed in the large featured section of the homepage.
+> Categories can be created/updated/deleted via the admin account (admin@admin.com). The top 4 prioritised catagories are displayed in the top-links and homepage.
 > RSpec and Capybara were used to run the unit and integration tests.
+> The 'bullet-gem' was used to identify cases of N+1 queries. N+1 queries were removed when found and unnecessary eager loading was also minimized.
 
 ## Live Demo
 
@@ -21,6 +23,7 @@
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/34813339/84836184-876c5300-b035-11ea-9131-0bf30d7700b5.png"/>
+  <img src="https://user-images.githubusercontent.com/34813339/84884936-a220e500-b092-11ea-89eb-ae2f0a928705.png"/>
 </p>
 
 ## Built With
@@ -64,6 +67,8 @@ Start server with:
     rails server
 ```
 
+Please note that the OmniAuth via Google and Github will not work on another deployment unless the API credentials are set up in Rails, please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_social_login.html%23appmodelsuserrb-1) to set it up.
+
 ### Running tests
 
 ```Ruby
@@ -76,6 +81,11 @@ Start server with:
 
 The application was deployed on Heroku.
 To deploy your own copy, you can follow the following [steps:](https://devcenter.heroku.com/articles/git)
+To allow Heroku to access the encrpyted api keys, use this command in your Heroku connected CLI:
+
+```Ruby
+heroku config:set RAILS_MASTER_KEY= <master.key>
+```
 
 ## Authors
 
