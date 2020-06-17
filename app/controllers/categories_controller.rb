@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :admin?, only: %i[edit update destroy create]
   before_action :find_category, only: %i[edit update destroy]
-  
 
   def index
     @indexed_categories = Category.all
@@ -48,10 +47,9 @@ class CategoriesController < ApplicationController
   end
 
   def admin?
-      unless current_user == User.find_by(email: 'admin@admin.com')
-        flash[:error] = 'Please login as Administrator'
-        redirect_to categories_path 
-      end
-  end
+    return if current_user == User.find_by(email: 'admin@admin.com')
 
+    flash[:error] = 'Please login as Administrator'
+    redirect_to categories_path
+  end
 end
