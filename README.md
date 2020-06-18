@@ -55,8 +55,13 @@ To get a local copy up and running follow these steps:
 
 ### Usage
 
-- Fork/Clone this project to your local machine
-- Open the folder in your local environment and run these lines of code to get started:
+- Fork/Clone this project to your local machine and checkout to required branch:
+
+```Bash
+    git clone git@github.com:ikraamg/Great-Books.git
+    cd Great-Books
+    git checkout core-feature
+```
 
 Install gems with:
 
@@ -64,11 +69,35 @@ Install gems with:
     bundle install
 ```
 
+Please note that the OmniAuth via Google and GitHub will not work on another deployment unless the API credentials are set up in Rails.
+Please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_social_login.html#register-your-app-with-github-and-google) to get the credentials.
+
+Thereafter, delete the ```config/credentials.yml.enc``` file.
+
+[This section](https://johnofsydney.github.io/notes/rails/rails_social_login.html#encrypted-credentials-1) will explain how to enter the credentials into the app.
+
+If you are NOT using Google or GitHub sign in methods, then overite lines 275 to 278 as done below inside /Great-Books/config/initializers/devise.rb file.
+
+```Ruby
+#Great-Books/config/initializers/devise.rb
+
+# github_client_id =  Rails.application.credentials.github[:client_id]
+# github_client_secret = Rails.application.credentials.github[:client_secret]
+# google_client_id = Rails.application.credentials.google_oauth2[:client_id]
+# google_client_secret = Rails.application.credentials.google_oauth2[:client_secret]
+
+github_client_id = 'empty-key'
+github_client_secret = 'empty-key'
+google_client_id = 'empty-key'
+google_client_secret = 'empty-key'
+```
+
 Setup database with:
 
 ```Ruby
-   rails DB:create
-   rails DB:migrate
+    yarn install --check-files
+    rails db:create
+    rails db:migrate
 ```
 
 Start server with:
@@ -76,8 +105,6 @@ Start server with:
 ```Ruby
     rails server
 ```
-
-Please note that the OmniAuth via Google and Github will not work on another deployment unless the API credentials are set up in Rails, please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_social_login.html%23appmodelsuserrb-1) to set it up.
 
 ### Running tests
 
@@ -96,6 +123,8 @@ To allow Heroku to access the encrpyted api keys, use this command in your Herok
 ```Ruby
 heroku config:set RAILS_MASTER_KEY= <master.key>
 ```
+
+(The master key can be found in the ```/config/master.key``` file)
 
 ## Authors
 
