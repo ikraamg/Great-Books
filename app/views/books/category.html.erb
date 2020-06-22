@@ -3,71 +3,9 @@
 
 <div class="container-fluid">
   <div class="row card-rows">
-    <% @c = 0 %>
+    <% init_c %>
     <% @books.each do |book| %>
-    <% if book.categories.exists?(@category) %> 
-    <% if @c.even? %>
-    <div class="card m-2 card-cat">
-      <% if book.photo.attached? %>
-      <%= image_tag(book.photo, class:"card-img-top")%>
-      <% else %>
-      <img
-        class="card-img-top"
-        src= <%= standard_image %>
-        alt="standard image"
-      />
-      <% end %>
-      <div class="card-body">
-        <h4 class="card-title orange"><%= @category_name %></h4>
-        <h4 class="card-title"><%= book.title %></h4>
-        <h5 class="card-title orange"><%= book.user.name %></h5>
-        <p class="card-text overflow-custom">
-          <%= book.text %> 
-          
-        </p>
-        <p class="card-text">
-          <%= link_to  "Read More", book, class: 'orange' %>
-        </p>
-
-        <p class="card-text">
-          <small class="text-muted"><%= vote_or_unvote_btn(book) %> <%=[book.votes.size] %></small>
-        </p>
-      </div>
-    </div>
+      <%= card_display(book) %>
     <% end %>
-    
-    <% if @c.odd? %>
-    <div class="card m-2 card-cat">
-      <div class="card-body">
-        <h4 class="card-title orange"><%= @category_name %></h4>
-        <h4 class="card-title"><%= book.title %></h4>
-        <h5 class="card-title orange"><%= book.user.name %></h5>
-        <p class="card-text overflow-custom">
-          <%= book.text %> 
-        </p>
-        <p class="card-text">
-          <%= link_to  "Read More", book, class: 'orange' %>
-        </p>
-
-        <p class="card-text">
-          <small class="text-muted"><%= vote_or_unvote_btn(book) %> <%=[book.votes.size] %></small>
-        </p>
-      </div>
-      <% if book.photo.attached? %>
-      <%= image_tag(book.photo, class:"card-img-bottom")%>
-      <% else %>
-      <img
-        class="card-img-bottom"
-        src= <%= standard_image %>
-        alt="standard image"
-      />
-      <% end %>
-    </div>
-    <% end %>
-    <% else %>
-    <% @c -= 1 %>
-    <% end %>
-    <% @c += 1 %>
-  <% end %>
   </div>
 </div>
