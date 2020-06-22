@@ -83,4 +83,12 @@ module BooksHelper
   def top_button
     button_to('Read More', book_path(@top_book.id), class: 'orange', method: 'get') if @top_book
   end
+
+  def show_links
+    if @book.user == current_user 
+    out =   (link_to 'Edit', edit_book_path(@book) )
+    out << '|'
+    out <<  (link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' })
+    end 
+  end
 end

@@ -1,10 +1,7 @@
 <h2>
   <strong class= 'orange'><%= @book.title %></strong>
 </h2>
-<% if @book.user == current_user %>
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<%= show_links %>
 </br>
 <p>
 <strong class="text-muted"><%= vote_or_unvote_btn(@book) %> </strong>
