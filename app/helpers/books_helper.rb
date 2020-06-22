@@ -16,20 +16,28 @@ module BooksHelper
     @c = 0
   end
 
-  def top_card(book)
+  def top_card(book, written = nil)
     content_tag :div, class: 'card m-2 card-cat' do
       output = if book.photo.attached?
                  image_tag(book.photo, class: 'card-img-top')
                else
                  image_tag(standard_image, class: 'card-img-top', alt: 'standard image')
                end
-      output << (render 'card_body', book: book)
+      output << if written.nil?
+                  (render 'card_body', book: book)
+                else
+                  (render 'card_body_written', book: book)
+                end
     end
   end
 
-  def bottom_card(book)
+  def bottom_card(book, written = nil)
     content_tag :div, class: 'card m-2 card-cat' do
-      output = render 'card_body', book: book
+      output = if written.nil?
+                 render 'card_body', book: book
+               else
+                 render 'card_body_written', book: book
+               end
       output << if book.photo.attached?
                   image_tag(book.photo, class: 'card-img-bottom')
                 else
@@ -45,6 +53,13 @@ module BooksHelper
     else
       @c -= 1
     end
+    @c += 1
+    output
+  end
+
+  def written_cards(book)
+    output = top_card(book, true) if @c.even?
+    output = bottom_card(book, true) if @c.odd?
     @c += 1
     output
   end
@@ -65,20 +80,7 @@ module BooksHelper
     end
   end
 
-  def top_title
-    @top_book.title if @top_book
-  end
-
-  def top_text
-    @top_book.text if @top_book
-  end
-
   def top_button
-    button_to("Read More", book_path(@top_book.id), class: 'orange', method: 'get') if @top_book 
+    button_to('Read More', book_path(@top_book.id), class: 'orange', method: 'get') if @top_book
   end
-
-  def current_book_title(current_book)
-    current_book.title if current_book  
-  end
-
 end

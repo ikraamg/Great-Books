@@ -1,0 +1,21 @@
+<div class="card-body">
+  <h4 class="card-title orange"> 
+  <%= 'Uncategorised' if book.categories.empty? %>
+  <% book.categories.pluck(:name).each do |category| %>
+  <%= category + ',' %>
+  <% end %>
+</h4>
+  <h4 class="card-title"><%= book.title %></h4>
+  <h5 class="card-title orange"><%= book.user.name %></h5>
+  <p class="card-text overflow-custom">
+    <%= book.text %> 
+    
+  </p>
+  <p class="card-text">
+    <%= link_to  "Read More", book, class: 'orange' %>
+  </p>
+
+  <p class="card-text">
+    <small class="text-muted"><%= vote_or_unvote_btn(book) %> <%=[book.votes.size] %></small>
+  </p>
+</div>

@@ -12,6 +12,7 @@ class BooksController < ApplicationController
     @category = params[:category]
     @category_name = Category.find(@category).name
     @books = Book.includes(:user, photo_attachment: :blob)
+    @c = 0
   end
 
   # GET /books/1
@@ -43,6 +44,7 @@ class BooksController < ApplicationController
 
   def written
     @books = Book.all.where(author_id: current_user.id).includes(:user, :categories, photo_attachment: :blob)
+    @c = 0
   end
 
   # PATCH/PUT /books/1
