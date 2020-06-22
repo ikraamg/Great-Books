@@ -14,7 +14,7 @@
 
 <div class = 'row category-row'>
 <% @categories.each do |category| %>
-<% current_book = category.books.first %>
+<% current_book = category.books.order_by_newest.first %>
 <div class="card category">
   <%= index_category_image(current_book) %>
   <div class="card-img-overlay d-flex h-100 flex-column">

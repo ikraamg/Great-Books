@@ -5,13 +5,13 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @top_book = Book.all.includes(photo_attachment: :blob).max_by { |book| book.votes.size }
+    @top_book = Book.all.order_by_newest.with_photo.max_by { |book| book.votes.size }
   end
 
   def category
     @category = params[:category]
     @category_name = Category.find(@category).name
-    @books = Book.includes(:user, photo_attachment: :blob)
+    @books = Book.with_photo.with_user.order_by_newest
     @c = 0
   end
 
@@ -43,7 +43,7 @@ class BooksController < ApplicationController
   end
 
   def written
-    @books = Book.all.where(author_id: current_user.id).includes(:user, :categories, photo_attachment: :blob)
+    @books = Book.all.created_by(current_user).with_photo.with_user.with_categories.order_by_newest
     @c = 0
   end
 
