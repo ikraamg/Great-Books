@@ -1,21 +1,11 @@
 <div class = 'row featured-row'>
 <div class="card featured">
-  <% if @top_book && @top_book.photo.attached? %>
-    <%= image_tag(@top_book.photo, class:"card-img featured-image")%>
-  <% else %>
-  <img
-    class="card-img featured-image"
-    src= <%= standard_image %>
-    alt="standard image"
-    />
-  <% end %>
+  <%= index_featured_image %>
   <div class="card-img-overlay d-flex h-100 flex-column justify-content-end">
-    <h1 class="card-title orange"><%= @top_book.title if @top_book %></h1>
+    <h1 class="card-title orange"><%= top_title %></h1>
     </br>
-    <h4 class="card-text overflow-custom lines-less"><%= @top_book.text if @top_book %></h4>
-    <% if @top_book %>
-    <h6> <%= button_to  "Read More", book_path(@top_book.id), class: 'orange', method: 'get' %> </h6>
-    <% end %>
+    <h4 class="card-text overflow-custom lines-less"><%= top_text %></h4>
+    <h6> <%= top_button %> </h6>
     </br>
   </div>
   
@@ -26,19 +16,11 @@
 <% @categories.each do |category| %>
 <% current_book = category.books.first %>
 <div class="card category">
-  <% if current_book && current_book.photo.attached? %>
-    <%= image_tag(current_book.photo, class:"card-img category-image")%>
-  <% else %>
-  <img
-    class="card-img category-image"
-    src= <%= standard_image %>
-    alt="standard image"
-    />
-  <% end %>
+  <%= index_category_image(current_book) %>
   <div class="card-img-overlay d-flex h-100 flex-column">
     <h2 class="card-title"><%= link_to category.name, category_display_path(category: category.id), class: 'text-white dark underlay' %></h2>
     </br>
-    <h5 class="card-text overflow-custom text-white mt-auto unerlay "><%= current_book.title if current_book %></h5>
+    <h5 class="card-text overflow-custom text-white mt-auto unerlay "><%= current_book_title(current_book) %></h5>
     </br>
   </div>
 </div>

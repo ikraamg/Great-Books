@@ -22,10 +22,10 @@ module BooksHelper
                  image_tag(book.photo, class: 'card-img-top')
                else
                  image_tag(standard_image, class: 'card-img-top', alt: 'standard image')
-                 end
+               end
       output << (render 'card_body', book: book)
     end
-    end
+  end
 
   def bottom_card(book)
     content_tag :div, class: 'card m-2 card-cat' do
@@ -36,7 +36,7 @@ module BooksHelper
                   image_tag(standard_image, class: 'card-img-bottom', alt: 'standard image')
                 end
     end
- end
+  end
 
   def card_display(book)
     if book.categories.exists?(@category)
@@ -48,4 +48,37 @@ module BooksHelper
     @c += 1
     output
   end
+
+  def index_category_image(current_book)
+    if current_book&.photo&.attached?
+      image_tag(current_book.photo, class: 'card-img category-image')
+    else
+      image_tag(standard_image, class: 'card-img category-image', alt: 'standard image')
+    end
+  end
+
+  def index_featured_image
+    if @top_book&.photo&.attached?
+      image_tag(@top_book.photo, class: 'card-img featured-image')
+    else
+      image_tag(standard_image, class: 'card-img featured-image', alt: 'standard image')
+    end
+  end
+
+  def top_title
+    @top_book.title if @top_book
+  end
+
+  def top_text
+    @top_book.text if @top_book
+  end
+
+  def top_button
+    button_to("Read More", book_path(@top_book.id), class: 'orange', method: 'get') if @top_book 
+  end
+
+  def current_book_title(current_book)
+    current_book.title if current_book  
+  end
+
 end
