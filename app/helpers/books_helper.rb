@@ -85,10 +85,10 @@ module BooksHelper
   end
 
   def show_links
-    if @book.user == current_user 
-    out =   (link_to 'Edit', edit_book_path(@book) )
+    return unless @book.user == current_user
+
+    out = (link_to 'Edit', edit_book_path(@book))
     out << '|'
-    out <<  (link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' })
-    end 
+    out << (link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' })
   end
 end

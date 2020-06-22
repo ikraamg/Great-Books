@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   has_many :books_categories, dependent: :destroy
   has_many :categories, through: :books_categories
   has_one_attached :photo
-  
+
   validates :author_id, presence: true
   validates :title, presence: true
   validates :text, presence: true
@@ -16,5 +16,4 @@ class Book < ApplicationRecord
   scope :with_user, -> { includes(:user) }
   scope :with_categories, -> { includes(:categories) }
   scope :created_by, ->(the_user) { where(author_id: the_user.id) }
-
 end
