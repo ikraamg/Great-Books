@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    name { 'Romance' }
+    name { Faker::Name.name  }
     priority { 1 }
   end
 end
