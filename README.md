@@ -63,36 +63,77 @@ To get a local copy up and running follow these steps:
     git checkout core-feature
 ```
 
-Install gems with:
+#### Install gems with
 
 ```Ruby
     bundle install
 ```
 
+Thereafter, delete the `config/credentials.yml.enc` file.
+
+#### OmniAuth Setup
+
 Please note that the OmniAuth via Google and GitHub will not work on another deployment unless the API credentials are set up in Rails.
-Please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_social_login.html#register-your-app-with-github-and-google) to get the credentials.
 
-Thereafter, delete the ```config/credentials.yml.enc``` file.
-
-[This section](https://johnofsydney.github.io/notes/rails/rails_social_login.html#encrypted-credentials-1) will explain how to enter the credentials into the app.
-
-If you are NOT using Google or GitHub sign in methods, then overite lines 275 to 278 as done below inside /Great-Books/config/initializers/devise.rb file.
+If you are **NOT** using Google or GitHub sign in methods, then overite as done below inside /Great-Books/config/initializers/devise.rb file.
 
 ```Ruby
 #Great-Books/config/initializers/devise.rb
 
 # github_client_id =  Rails.application.credentials.github[:client_id]
 # github_client_secret = Rails.application.credentials.github[:client_secret]
+
 # google_client_id = Rails.application.credentials.google_oauth2[:client_id]
 # google_client_secret = Rails.application.credentials.google_oauth2[:client_secret]
 
 github_client_id = 'empty-key'
 github_client_secret = 'empty-key'
+
 google_client_id = 'empty-key'
 google_client_secret = 'empty-key'
 ```
 
-Setup database with:
+If you are **optionally** using the Google and GitHub sign-in then:
+Please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_social_login.html#register-your-app-with-github-and-google) to get the credentials.
+
+[This section](https://johnofsydney.github.io/notes/rails/rails_social_login.html#encrypted-credentials-1) will explain how to enter the credentials into the app.
+
+#### Active Storage Setup
+
+If you are **NOT** using AWS S3 Buckets for active storage, you also need to use the local storage for image files instead of AWS:
+
+1. Change **line 31** in config/environments/development.rb and **line 38** in config/environments/production.rb to:
+
+```Ruby
+#config/environments/development.rb
+#config/environments/production.rb
+config.active_storage.service = :local
+```
+
+2. Comment out lines 8 to 23 in config/storage.yml.
+
+```Ruby
+#config/storage.yml
+# amazon_dev:
+#   service: S3
+#   access_key_id: <%= Rails.application.credentials.aws[:access_key_id] %>
+#   secret_access_key:
+#     <%= Rails.application.credentials.aws[:secret_access_key] %>
+#   region: <%= Rails.application.credentials.aws[:region] %>
+#   bucket: <%= Rails.application.credentials.aws[:dev][:bucket] %>
+
+# amazon_prod:
+#   service: S3
+#   access_key_id: <%= Rails.application.credentials.aws[:access_key_id] %>
+#   secret_access_key:
+#     <%= Rails.application.credentials.aws[:secret_access_key] %>
+#   region: <%= Rails.application.credentials.aws[:region] %>
+#   bucket: <%= Rails.application.credentials.aws[:prod][:bucket] %>
+```
+
+If you are **optionally** using AWS S3 buckets for active storage, please follow this [tutorial](https://medium.com/@iachieve80/rails-6-0-upload-images-using-active-storage-and-amazon-simple-storage-service-amazon-s3-36861c03dc4a)(skipping the 'Setting up Active Storage' section).
+
+#### Setup database with
 
 ```Ruby
     yarn install --check-files
@@ -100,7 +141,7 @@ Setup database with:
     rails db:migrate
 ```
 
-Start server with:
+#### Start server with
 
 ```Ruby
     rails server
@@ -124,7 +165,7 @@ To allow Heroku to access the encrpyted api keys, use this command in your Herok
 heroku config:set RAILS_MASTER_KEY= <master.key>
 ```
 
-(The master key can be found in the ```/config/master.key``` file)
+(The master key can be found in the `/config/master.key` file)
 
 ## Authors
 
