@@ -9,8 +9,6 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :text, presence: true
 
-  # default_scope { order(created_at: :desc) }
-
   scope :order_by_newest, -> { order(created_at: :desc) }
   scope :with_photo, -> { includes(photo_attachment: :blob) }
   scope :with_user, -> { includes(:user) }

@@ -2,6 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 Capybara.ignore_hidden_elements = false
 
+# rubocop:disable Metrics/BlockLength
 feature 'Admin Features' do
   before(:example) do
     FactoryBot.create(:user, name: 'admin', email: 'admin@admin.com', password: '123456')
@@ -45,5 +46,5 @@ feature 'Admin Features' do
     expect(page).to have_content 'Category was successfully deleted'
     expect(page).to_not have_content '1'
   end
-
 end
+# rubocop:enable Metrics/BlockLength

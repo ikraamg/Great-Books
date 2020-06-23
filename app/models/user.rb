@@ -20,8 +20,6 @@ class User < ApplicationRecord
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-
   def self.new_with_session(params, session)
     super.tap do |user|
       if (data = session['devise.github'] && session['devise.github_data']['extra']['raw_info'])
@@ -33,4 +31,3 @@ class User < ApplicationRecord
     end
   end
 end
-# rubocop:enable Metrics/CyclomaticComplexity
