@@ -138,7 +138,7 @@ If you are **optionally** using AWS S3 buckets for active storage, please follow
 ### Running tests
 
 ```Ruby
-    bundle exec RSpec --format documentation
+    bundle exec rspec --format documentation
 ```
 
 - Open a web page and go to [port 3000 on your local machine.](http://localhost:3000)
