@@ -38,7 +38,7 @@
 
 ## Built With
 
-- Ruby 2.6.5 and Rails 5.2.4.2
+- Ruby 2.7 and Rails 6.0.3
 - Bootstrap 4
 - Deployed on Heroku
 
@@ -48,7 +48,7 @@ To get a local copy up and running follow these steps:
 
 ### Prerequisites
 
-- Ruby: 2.6.3
+- Ruby: 2.7
 - Rails: 6.0.3
 - Postgres: >=9.5
 - Git
