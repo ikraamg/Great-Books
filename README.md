@@ -49,7 +49,7 @@ To get a local copy up and running follow these steps:
 ### Prerequisites
 
 - Ruby: 2.6.3
-- Rails: 5.2.3
+- Rails: 6.0.3
 - Postgres: >=9.5
 - Git
 
@@ -69,40 +69,40 @@ To get a local copy up and running follow these steps:
     bundle install
 ```
 
-Thereafter, delete the `config/credentials.yml.enc` file.
+Please note that the OmniAuth via Google and GitHub as well as Active Storage with Amazon S3 will not work on another deployment unless the API credentials are set up in Rails.
 
-#### OmniAuth Setup
+If you are **NOT** using Google or GitHub sign in methods and **NOT** using AWS S3 Buckets for active storage, you will need to make the following changes:
 
-Please note that the OmniAuth via Google and GitHub will not work on another deployment unless the API credentials are set up in Rails.
+1. Delete the `config/credentials.yml.enc` file.
 
-If you are **NOT** using Google or GitHub sign in methods, then overite as done below inside /Great-Books/config/initializers/devise.rb file.
+2. Run the following command in the repository terminal, you can change 'code' which is the VScode editor to 'atom' if needed.
 
-```Ruby
-#Great-Books/config/initializers/devise.rb
-
-# github_client_id =  Rails.application.credentials.github[:client_id]
-# github_client_secret = Rails.application.credentials.github[:client_secret]
-
-# google_client_id = Rails.application.credentials.google_oauth2[:client_id]
-# google_client_secret = Rails.application.credentials.google_oauth2[:client_secret]
-
-github_client_id = 'empty-key'
-github_client_secret = 'empty-key'
-
-google_client_id = 'empty-key'
-google_client_secret = 'empty-key'
+```Bash
+EDITOR="code --wait" rails credentials:edit
+#you can change the 'code' editor to 'atom' or other editors as needed.
 ```
 
-If you are **optionally** using the Google and GitHub sign-in then:
-Please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_social_login.html#register-your-app-with-github-and-google) to get the credentials.
+This should create a new credentials and master key file as well as open an editor which you will need to add the follwing code:
 
-[This section](https://johnofsydney.github.io/notes/rails/rails_social_login.html#encrypted-credentials-1) will explain how to enter the credentials into the app.
+```Ruby
+aws:
+  access_key_id: '123'
+  secret_access_key: '123'
+  region: '123'
+  dev:
+    bucket: '123'
+  prod:
+    bucket: '123'
 
-#### Active Storage Setup
+github:
+  client_id: '123'
+  client_secret: '123'
+google_oauth2:
+  client_id: '123'
+  client_secret: '123'
+```
 
-If you are **NOT** using AWS S3 Buckets for active storage, you also need to use the local storage for image files instead of AWS:
-
-1. Change **line 31** in config/environments/development.rb and **line 38** in config/environments/production.rb to:
+3. Change **line 31** in config/environments/development.rb and **line 38** in config/environments/production.rb to:
 
 ```Ruby
 #config/environments/development.rb
@@ -110,26 +110,14 @@ If you are **NOT** using AWS S3 Buckets for active storage, you also need to use
 config.active_storage.service = :local
 ```
 
-2. Comment out lines 8 to 23 in config/storage.yml.
+#### OmniAuth Setup - Optional
 
-```Ruby
-#config/storage.yml
-# amazon_dev:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.aws[:access_key_id] %>
-#   secret_access_key:
-#     <%= Rails.application.credentials.aws[:secret_access_key] %>
-#   region: <%= Rails.application.credentials.aws[:region] %>
-#   bucket: <%= Rails.application.credentials.aws[:dev][:bucket] %>
+If you are **optionally** using the Google and GitHub sign-in then:
+Please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_social_login.html#register-your-app-with-github-and-google) to get the credentials.
 
-# amazon_prod:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.aws[:access_key_id] %>
-#   secret_access_key:
-#     <%= Rails.application.credentials.aws[:secret_access_key] %>
-#   region: <%= Rails.application.credentials.aws[:region] %>
-#   bucket: <%= Rails.application.credentials.aws[:prod][:bucket] %>
-```
+[This section](https://johnofsydney.github.io/notes/rails/rails_social_login.html#encrypted-credentials-1) will explain how to enter the credentials into the app.
+
+#### Active Storage Setup - Optional
 
 If you are **optionally** using AWS S3 buckets for active storage, please follow this [tutorial](https://medium.com/@iachieve80/rails-6-0-upload-images-using-active-storage-and-amazon-simple-storage-service-amazon-s3-36861c03dc4a)(skipping the 'Setting up Active Storage' section).
 
