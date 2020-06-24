@@ -102,6 +102,8 @@ google_oauth2:
   client_secret: '123'
 ```
 
+Close the file to save, the terminal should print: 'File encrypted and saved'.
+
 3. Change **line 31** in config/environments/development.rb and **line 38** in config/environments/production.rb to:
 
 ```Ruby
