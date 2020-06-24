@@ -1,0 +1,44 @@
+<%= form_with(model: book, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field">
+  <%= form.label "Categories of the Story (can select more than one)" %>
+  <%= form.collection_check_boxes :category_ids, @categories, :id, :name do |b| %>
+    <div class="d-flex align-items-center ">
+      <%= b.label %>
+      <span class='ml-2'></span>
+      <%= b.check_box  %>
+    </div>
+  <% end %>
+</div>
+</br>
+  <div class="field form-group">
+    <%= form.label :title_of_story %>
+    <%= form.text_field :title, class: 'form-control'  %>
+  </div>
+</br>
+  <div class="field form-group">
+    <%= form.label :story_body %>
+    <%= form.text_area :text, class: 'form-control' %>
+  </div>
+  </br>
+  <div class="field form-group">
+    <%= form.label :Cover_image %>
+    <%= form.file_field :photo %>
+  </div>
+  </br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  </br>
+<% end %>

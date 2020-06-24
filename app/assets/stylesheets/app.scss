@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'CartoGoth';
+  src: url('/app/assets/fonts/CartoGothicStd-Book.otf');
+  font-family: 'Chivo-Black';
+  src: url('/app/assets/fonts/Chivo-Black.otf');
+  font-family: 'Lato';
+  src: url('/app/assets/fonts/Lato-Black.ttf');
+  src: url(/app/assets/images/favicon/android-chrome-192x192.png);
+}
+
+body {
+  color: #333;
+  min-width: 350px;
+  max-width: 95vw;
+  margin: 0 auto;
+  overflow-x: hidden;
+  background-color: #36231617;
+}
+
+body,
+p,
+ol,
+ul,
+td {
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-weight: 800;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a:hover {
+  background-color: rgba(236, 140, 14, 0.233);
+  text-decoration: none;
+  border-radius: 5%;
+}
+
+.dark:hover {
+  background-color: rgb(255, 145, 1);
+}
+
+div.field,
+div.actions {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+}
+
+.remming {
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+}
+
+#notice {
+  color: green;
+}
+
+#error {
+  color: #f76108;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: #f76108;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid #f76108;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #f76108;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+label {
+  display: block;
+}
+
+button {
+  color: #f76108;
+}
+
+.orange {
+  color: #f76108;
+}
+
+.navbar-custom {
+  background-color: #fff;
+  color: #4e443e;
+  border: 0;
+  border-bottom: thick;
+  border-color: #f76108;
+  border-style: solid;
+  font-size: 1.1em;
+
+  .orange {
+    color: #f76108;
+  }
+
+  a {
+    color: #4e443e;
+    text-decoration: underline;
+    text-decoration-color: #4e443e;
+  }
+
+  .dot {
+    font-size: 50px;
+    margin-left: -22px;
+    margin-top: -18px;
+  }
+}
+
+.footer-custom {
+  background-color: #4e443e;
+
+  .white {
+    color: white;
+  }
+
+  .icon {
+    font-size: 1.1rem;
+  }
+}

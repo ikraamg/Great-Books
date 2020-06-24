@@ -1,0 +1,8 @@
+
+<div class="container-fluid">
+  <div class="row card-rows">
+    <% @books.each do |book| %>
+    <%= written_cards(book) %>
+    <% end %>
+  </div>
+</div>

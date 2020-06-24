@@ -1,0 +1,10 @@
+<h2 class="orange"><%= @category_name %> - Stories</h2>
+<br />
+
+<div class="container-fluid">
+  <div class="row card-rows">
+    <% @books.each do |book| %>
+      <%= card_display(book) %>
+    <% end %>
+  </div>
+</div>
