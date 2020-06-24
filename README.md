@@ -38,7 +38,7 @@
 
 ## Built With
 
-- Ruby 2.6.5 and Rails 5.2.4.2
+- Ruby 2.7 and Rails 6.0.3
 - Bootstrap 4
 - Deployed on Heroku
 
@@ -48,7 +48,7 @@ To get a local copy up and running follow these steps:
 
 ### Prerequisites
 
-- Ruby: 2.6.3
+- Ruby: 2.7
 - Rails: 6.0.3
 - Postgres: >=9.5
 - Git
@@ -63,53 +63,24 @@ To get a local copy up and running follow these steps:
     git checkout core-feature
 ```
 
-#### Install gems with
-
 ```Ruby
     bundle install
 ```
 
 Please note that the OmniAuth via Google and GitHub as well as Active Storage with Amazon S3 will not work on another deployment unless the API credentials are set up in Rails.
 
-If you are **NOT** using Google or GitHub sign in methods and **NOT** using AWS S3 Buckets for active storage, you will need to make the following changes:
-
-1. Delete the `config/credentials.yml.enc` file.
-
-2. Run the following command in the repository terminal, you can change 'code' which is the VScode editor to 'atom' if needed.
-
-```Bash
-EDITOR="code --wait" rails credentials:edit
-#you can change the 'code' editor to 'atom' or other editors as needed.
-```
-
-This should create a new credentials and master key file as well as open an editor which you will need to add the follwing code:
+Setup database with:
 
 ```Ruby
-aws:
-  access_key_id: '123'
-  secret_access_key: '123'
-  region: '123'
-  dev:
-    bucket: '123'
-  prod:
-    bucket: '123'
-
-github:
-  client_id: '123'
-  client_secret: '123'
-google_oauth2:
-  client_id: '123'
-  client_secret: '123'
+    yarn install --check-files
+    rails db:create
+    rails db:migrate
 ```
 
-Close the file to save, the terminal should print: 'File encrypted and saved'.
-
-3. Change **line 31** in config/environments/development.rb and **line 38** in config/environments/production.rb to:
+Start server with:
 
 ```Ruby
-#config/environments/development.rb
-#config/environments/production.rb
-config.active_storage.service = :local
+    rails server
 ```
 
 #### OmniAuth Setup - Optional
@@ -122,20 +93,6 @@ Please follow [this guide](https://johnofsydney.github.io/notes/rails/rails_soci
 #### Active Storage Setup - Optional
 
 If you are **optionally** using AWS S3 buckets for active storage, please follow this [tutorial](https://medium.com/@iachieve80/rails-6-0-upload-images-using-active-storage-and-amazon-simple-storage-service-amazon-s3-36861c03dc4a)(skipping the 'Setting up Active Storage' section).
-
-#### Setup database with
-
-```Ruby
-    yarn install --check-files
-    rails db:create
-    rails db:migrate
-```
-
-#### Start server with
-
-```Ruby
-    rails server
-```
 
 ### Running tests
 
